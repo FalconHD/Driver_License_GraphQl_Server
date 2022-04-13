@@ -7,7 +7,7 @@ export const typeDefs = gql`
     email: String!
     phone: String!
     cin: String!
-    score: String!
+    score: Int!
     licenseType: String!
   }
 
