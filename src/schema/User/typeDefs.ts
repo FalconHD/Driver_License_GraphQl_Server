@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express';
 
 // Construct a schema, using GraphQL schema language
 export const typeDefs = gql`
@@ -29,6 +29,7 @@ export const typeDefs = gql`
     licenseType: LicenseType!
     role: Role!
     score: Int!
+    createdAt: String!
   }
 
   type Query {

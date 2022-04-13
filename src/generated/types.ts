@@ -32,6 +32,9 @@ export type MutationSubmitDataArgs = {
 export type Query = {
   __typename?: 'Query';
   Users: Array<User>;
+  countUsers: Scalars['Int'];
+  countUsersByDay: Array<Scalars['Int']>;
+  getUsers: Array<User>;
 };
 
 export { Role };
@@ -39,6 +42,7 @@ export { Role };
 export type User = {
   __typename?: 'User';
   cin: Scalars['String'];
+  createdAt: Scalars['String'];
   email: Scalars['String'];
   id: Scalars['ID'];
   licenseType: LicenseType;
@@ -54,7 +58,7 @@ export type UserInput = {
   licenseType: Scalars['String'];
   name: Scalars['String'];
   phone: Scalars['String'];
-  score: Scalars['String'];
+  score: Scalars['Int'];
 };
 
 
@@ -158,12 +162,16 @@ export type MutationResolvers<ContextType = Context, ParentType extends Resolver
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   Users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
+  countUsers?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  countUsersByDay?: Resolver<Array<ResolversTypes['Int']>, ParentType, ContextType>;
+  getUsers?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
 };
 
 export type RoleResolvers = EnumResolverSignature<{ ADMIN?: any, USER?: any }, ResolversTypes['Role']>;
 
 export type UserResolvers<ContextType = Context, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   cin?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   licenseType?: Resolver<ResolversTypes['LicenseType'], ParentType, ContextType>;
